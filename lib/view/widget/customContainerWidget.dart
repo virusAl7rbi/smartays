@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 CContainer({required Widget child}) => SizedBox.expand(
       child: Container(
+        // height: double.maxFinite,
         child: child,
         decoration: BoxDecoration(
             image: DecorationImage(

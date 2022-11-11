@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,8 +10,8 @@ updateLanguage(locale) {
 }
 
 final List locale = [
-  {'name': 'ENGLISH', 'locale': Locale('en', 'US')},
-  {'name': 'ARABIC', 'locale': Locale('ar', 'SA')},
+  {'name': '🇺🇸', 'locale': Locale('en', 'US')},
+  {'name': '🇸🇦', 'locale': Locale('ar', 'SA')},
 ];
 Map currentlanguage = locale[0];
 
@@ -22,12 +22,18 @@ CAppBar(String title) => AppBar(
       elevation: 0,
       actions: [
         DropdownButton(
-            icon: Icon(Icons.language),
-            
+            icon: Icon(
+              Icons.language,
+              color: Colors.black,
+              size: 40,
+            ),
+            alignment: AlignmentDirectional.center,
             items: locale.map((e) {
               return DropdownMenuItem(
+                alignment: AlignmentDirectional.center,
+
                 value: e,
-                child: Text(e['name']),
+                child: Text(e['name'], style: TextStyle(fontSize: 30),),
               );
             }).toList(),
             onChanged: (value) {

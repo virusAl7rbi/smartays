@@ -11,10 +11,10 @@ class ApiClient extends GetxController {
 
   fullUrl(String parameter) {
     // stander url https://smartays.com/api/auth/
-    return "https://smartays.com/api/auth/$parameter";
+    return Uri.parse("https://smartays.com/api/auth/$parameter");
   }
 
-  Future<Map> login(String email, String password) async {
+  Future<Map?> login(String email, String password) async {
     late Map result;
     await http.post(fullUrl("login"),
         body: {"email": email, "password": password}).then((response) {
