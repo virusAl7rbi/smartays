@@ -25,6 +25,13 @@ class LandingPageController extends GetxController {
           MaterialPageRoute(builder: (context) => LoginPage()),
           (route) => false);
     }
+    await localStorage.read(key: "language").then((language) {
+      Map langs = {
+        "en":Locale("en","US"),
+        "ar": Locale('ar', 'SA')
+      };
+      Get.updateLocale(langs['language']);
+    });
   }
 
   LandingPageController(context) {

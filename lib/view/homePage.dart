@@ -2,12 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:smartays/controller/attendanceController.dart';
 import 'package:smartays/controller/homeController.dart';
+import 'package:smartays/view/attendanceRecordPage.dart';
 import 'package:smartays/view/profilePage.dart';
 import 'package:smartays/view/widget/CustomAppBar.dart';
-import 'package:smartays/view/widget/CustomButtom.dart';
-import 'package:smartays/view/widget/customContainerWidget.dart';
+import 'package:smartays/view/widget/CustomButton.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

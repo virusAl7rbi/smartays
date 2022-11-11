@@ -1,12 +1,13 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 
-updateLanguage(locale) {
-  print(locale);
-  Get.back();
+updateLanguage(locale) async {
+  FlutterSecureStorage localStorage = FlutterSecureStorage();
   Get.updateLocale(locale['locale']);
+  localStorage.write(key: "language", value: locale['locale'].languageCode);
 }
 
 final List locale = [

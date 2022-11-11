@@ -45,9 +45,8 @@ class ApiClient extends GetxController {
     return result;
   }
 
-  Future<Map> user_get_timeworke_presences() async {
-    //! for what????
-    Map result = {};
+  Future<List> attendanceRecord() async {
+    List result = [];
     String? token = await localStorage.read(key: "token");
     await http.post(fullUrl("user_get_timeworke_presences"),
         body: {"token": token}).then((response) {
@@ -133,7 +132,6 @@ class ApiClient extends GetxController {
 
   Future<Map> checkOut() async {
     Map result = {};
-    String? token = await localStorage.read(key: "token");
     await http.post(fullUrl("leave"), body: {}).then((response) {
       result = jsonDecode(response.body)['message'];
     });
