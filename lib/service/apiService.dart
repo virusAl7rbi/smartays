@@ -9,7 +9,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 class ApiClient extends GetxController {
   FlutterSecureStorage localStorage = FlutterSecureStorage();
 
-  fullUrl(String parameter) {
+  Uri fullUrl(String parameter) {
     // stander url https://smartays.com/api/auth/
     return Uri.parse("https://smartays.com/api/auth/$parameter");
   }
@@ -110,6 +110,32 @@ class ApiClient extends GetxController {
     await http.post(fullUrl("user_check_device"),
         body: {"token": token, "visit": deviceId}).then((response) {
       result = jsonDecode(response.body);
+    });
+    return result;
+  }
+
+  Future<Map> checkIn(
+      {required String lat,
+      required String lon,
+      required String deviceId}) async {
+    Map result = {};
+    String? token = await localStorage.read(key: "token");
+    await http.post(fullUrl("presence"), body: {
+      "token": token,
+      "lat": lat,
+      "lon": lon,
+      "deviceId": deviceId
+    }).then((response) {
+      result = jsonDecode(response.body)['message'];
+    });
+    return result;
+  }
+
+  Future<Map> checkOut() async {
+    Map result = {};
+    String? token = await localStorage.read(key: "token");
+    await http.post(fullUrl("leave"), body: {}).then((response) {
+      result = jsonDecode(response.body)['message'];
     });
     return result;
   }

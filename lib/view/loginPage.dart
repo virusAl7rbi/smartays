@@ -24,7 +24,7 @@ class LoginPage extends StatelessWidget {
             backgroundColor: Colors.transparent,
             body: Column(
               children: [
-                CAppBar(""),
+                CAppBar(),
                 GetBuilder<LoginController>(
                     init: LoginController(),
                     builder: (controller) {
@@ -42,13 +42,11 @@ class LoginPage extends StatelessWidget {
                                 keyboardType: TextInputType.emailAddress,
                                 controller: controller.emailCont,
                                 decoration: CInputDecoration(
-
                                     errorText: controller.emailError,
                                     hint: "example@example.com",
                                     label: "email"),
                               ),
                               TextFormField(
-                                
                                 controller: controller.passwordCont,
                                 obscureText:
                                     true, // to make`t the star show when write password

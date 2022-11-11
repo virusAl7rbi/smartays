@@ -15,13 +15,26 @@ final List locale = [
 ];
 Map currentlanguage = locale[0];
 
-CAppBar(String title) => AppBar(
+CAppBar({
+  String? title = "",
+  Color backgroundColor = Colors.transparent,
+}) =>
+    AppBar(
       centerTitle: true,
-      title: Text(title.tr),
-      backgroundColor: Colors.transparent,
+      toolbarHeight: 80,
+      title: Text(title!.tr),
+      backgroundColor: backgroundColor,
       elevation: 0,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          bottom: Radius.elliptical(80, 56.0),
+        ),
+      ),
       actions: [
         DropdownButton(
+            underline: Container(
+              height: 0,
+            ),
             icon: Icon(
               Icons.language,
               color: Colors.black,
@@ -31,9 +44,11 @@ CAppBar(String title) => AppBar(
             items: locale.map((e) {
               return DropdownMenuItem(
                 alignment: AlignmentDirectional.center,
-
                 value: e,
-                child: Text(e['name'], style: TextStyle(fontSize: 30),),
+                child: Text(
+                  e['name'],
+                  style: TextStyle(fontSize: 30),
+                ),
               );
             }).toList(),
             onChanged: (value) {

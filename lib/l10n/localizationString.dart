@@ -1,23 +1,22 @@
 import 'package:get/get.dart';
 
-class LocalizationString extends Translations{
+class LocalizationString extends Translations {
   @override
   // TODO: implement keys
   Map<String, Map<String, String>> get keys => {
-    "ar_SA": {
+        "ar_SA": {
           "language": "العربية",
-          "helloWorld": "!مرحبا بالعالم",
-          "hello": "مرحبا",
           "login": "تسجيل الدخول",
           "email": " البريد الالكتروني",
           "password": "كلمة المرور",
           "emailcheck": "الرجاء التحقق من ادخال البريد الالكتروني",
           "passwordcheck": "الرجاء التحقق من ادخال كلمة المرور",
           "smartfingerprint": "البصمة الذكية",
-          "checkin": "الحضور",
-          "checkout": "الانصراف",
-          "leave": "الاستئذان",
-          "myprofile": "ملفي الشخصي",
+          "Smart Fingerprint": "البصمة الذكية",
+          "check in": "الحضور",
+          "check out": "الانصراف",
+          "Leave": "الاستئذان",
+          "My Profile": "ملفي الشخصي",
           "newuser": "اضافة مستخدم",
           "goodbye": "!مع السلامة",
           "thankyouforyourattending": "شكرا لحضورك!",
@@ -29,8 +28,9 @@ class LocalizationString extends Translations{
           "youarenotallowed": "غير مصرح لك بالاضافة",
           "name": "الاسم",
           "phone": "رقم الجوال",
-          "leaverequest": "سبب الاستئذان",
-          "newuserbtn": "اضافة"
+          "leave reason": "سبب الاستئذان",
+          "newuserbtn": "اضافة",
+          "Attendance History": "سجل الحضور"
         },
         "en_US": {
           "language": "English",
@@ -59,6 +59,5 @@ class LocalizationString extends Translations{
           "leaverequest": "Leave Request",
           "newuserbtn": "Add"
         }
-  };
-
+      };
 }
