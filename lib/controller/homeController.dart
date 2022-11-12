@@ -122,7 +122,10 @@ class HomeController extends GetxController {
                   ),
                 ),
                 IconButton(
-                    onPressed: () => api.userAskPermission(permission.text),
+                    onPressed: () {
+                      api.userAskPermission(permission.text);
+                      Navigator.pop(ctx);
+                    },
                     icon: Icon(Icons.send_rounded))
               ]),
             ));

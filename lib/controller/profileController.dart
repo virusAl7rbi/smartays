@@ -12,23 +12,28 @@ class ProfileController extends GetxController {
   ApiClient api = ApiClient();
   //localstorage
   FlutterSecureStorage localStorage = FlutterSecureStorage();
-  String? name;
-  String? email;
-  String? phone;
+  TextEditingController name = TextEditingController();
+  TextEditingController email = TextEditingController();
+  TextEditingController phone = TextEditingController();
   getUserInfo() async {
     api.getProfile().then((response) {
-      name = response['name'];
-      email = response['email'];
-      phone = response['phone'];
+      name.text = response['name'];
+      email.text = response['email'];
+      phone.text = response['phone'];
+      update();
     });
   }
 
   logout(context) async {
-    await localStorage.delete(key: "token");
     api.logout();
+    await localStorage.delete(key: "token");
     Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(builder: ((context) => LoginPage())),
         (route) => false);
+  }
+
+  ProfileController() {
+    getUserInfo();
   }
 }

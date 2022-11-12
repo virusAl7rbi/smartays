@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, unused_local_variable
+// ignore_for_file: prefer_const_constructors, unused_local_variable, unused_element
 
 import 'dart:convert';
 
@@ -21,14 +21,15 @@ class ApiClient extends GetxController {
         ..fields.addAll(requestBody!);
       var response = await request.send();
       final respStr = await response.stream.bytesToString();
-
+      print(respStr);
       return jsonDecode(respStr);
     } catch (error) {
+      print(error);
       return {"error": error};
     }
   }
 
-  Future<Map?> login(String email, String password) async {
+  Future<Map> login(String email, String password) async {
     late Map result;
 
     await request(
@@ -48,7 +49,7 @@ class ApiClient extends GetxController {
     return result;
   }
 
-  Future<List> getTimework() async {
+  Future<List> _getTimework() async {
     late List result;
     String? token = await localStorage.read(key: "token");
 
@@ -100,14 +101,14 @@ class ApiClient extends GetxController {
     return result;
   }
 
-  Future<Map> userAskPermission(String reason) async {
-    Map result = {};
+  Future<String> userAskPermission(String reason) async {
+    String result = "";
     String? token = await localStorage.read(key: "token");
 
     await request(
-            url: 'user_get_timework',
+            url: 'user_ask_perm',
             requestBody: {"token": token!, "reason": reason})
-        .then((response) => result = response['data']);
+        .then((response) => result = response['message']);
     return result;
   }
 
@@ -119,11 +120,11 @@ class ApiClient extends GetxController {
     return result;
   }
 
-  Future<Map> checkIn(
+  Future<String> checkIn(
       {required String lat,
       required String lon,
       required String deviceId}) async {
-    Map result = {};
+    String result = "";
     String? token = await localStorage.read(key: "token");
 
     await request(url: 'presence', requestBody: {
@@ -131,22 +132,22 @@ class ApiClient extends GetxController {
       "lat": lat,
       "lon": lon,
       "deviceId": deviceId
-    }).then((response) => result = response['data']);
+    }).then((response) => result = response['message']);
     return result;
   }
 
-  Future<Map> checkOut(
+  Future<String> checkOut(
       {required String lat,
       required String lon,
       required String deviceId}) async {
-    Map result = {};
+    String result = "";
     String? token = await localStorage.read(key: "token");
-    await request(url: 'user_get_timework', requestBody: {
+    await request(url: 'leave', requestBody: {
       "token": token!,
       "lat": lat,
       "lon": lon,
       "deviceId": deviceId
-    }).then((response) => result = response['data']);
+    }).then((response) => result = response['message']);
     return result;
   }
 }

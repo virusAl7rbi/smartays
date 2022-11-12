@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:smartays/service/apiService.dart';
+import 'package:smartays/view/widget/loadingWidget.dart';
 
 class AttendanceController extends GetxController {
   BoxDecoration cardDesign = BoxDecoration(
@@ -29,12 +30,12 @@ class AttendanceController extends GetxController {
     return formated;
   }
 
-  getAttendanceRecord() {
-    api.getTimework().then((response) => {
+  getAttendanceRecord() async {
+    await api.attendanceRecord().then((response) => {
           recordLength = response.length,
           recordItems = response
               .map((record) => {
-                    "Day": record['day'].tr,
+                    "Day": record['day'],
                     "checkIn": to12(record['morning']),
                     "checkOut": record['evening'] == 0
                         ? record['evening']
@@ -44,9 +45,5 @@ class AttendanceController extends GetxController {
               .toList()
         });
     update();
-  }
-
-  AttendanceController() {
-    getAttendanceRecord();
   }
 }

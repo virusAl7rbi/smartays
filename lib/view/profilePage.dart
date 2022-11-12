@@ -21,7 +21,7 @@ class ProfilePage extends StatelessWidget {
             padding: EdgeInsets.all(20),
             children: [
               TextFormField(
-                initialValue: controller.email,
+                controller: controller.email,
                 decoration: InputDecoration(
                     enabled: false,
                     label: Text("email".tr),
@@ -31,7 +31,7 @@ class ProfilePage extends StatelessWidget {
                 height: 20,
               ),
               TextFormField(
-                initialValue: controller.name,
+                controller: controller.name,
                 enabled: false,
                 decoration: InputDecoration(
                     label: Text("name".tr), border: OutlineInputBorder()),
@@ -40,7 +40,7 @@ class ProfilePage extends StatelessWidget {
                 height: 20,
               ),
               TextFormField(
-                initialValue: controller.phone,
+                controller: controller.phone,
                 decoration: InputDecoration(
                     enabled: false,
                     label: Text("phone number".tr),
@@ -51,7 +51,7 @@ class ProfilePage extends StatelessWidget {
                 height: 20,
               ),
               TextButton.icon(
-                onPressed: () => controller.logout,
+                onPressed: () => controller.logout(context),
                 label: Text(
                   "Log out".tr,
                   style: TextStyle(fontSize: 20),

@@ -15,15 +15,13 @@ class LandingPage extends StatelessWidget {
       Loading(context); // wait until page load to show the dialog
     });
     return Scaffold(
-      body: SizedBox.expand(
-        child: Container(
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage(
-                    "assets/images/back.png",
-                  ),
-                  fit: BoxFit.cover)),
-        ),
+      body: Container(
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage(
+                  "assets/images/back.png",
+                ),
+                fit: BoxFit.cover)),
       ),
     );
   }
