@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smartays/controller/landingController.dart';
-import 'package:smartays/view/widget/loadingWidge.dart';
+import 'package:smartays/view/widget/loadingWidget.dart';
 
 class LandingPage extends StatelessWidget {
   const LandingPage({super.key});

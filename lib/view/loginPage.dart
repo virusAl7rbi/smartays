@@ -36,7 +36,7 @@ class LoginPage extends StatelessWidget {
                             children: [
                               SizedBox(
                                 height:
-                                    MediaQuery.of(context).size.height * 0.25,
+                                    MediaQuery.of(context).size.height * 0.20,
                               ),
                               TextFormField(
                                 keyboardType: TextInputType.emailAddress,
@@ -44,7 +44,10 @@ class LoginPage extends StatelessWidget {
                                 decoration: CInputDecoration(
                                     errorText: controller.emailError,
                                     hint: "example@example.com",
-                                    label: "email"),
+                                    label: "email".tr),
+                              ),
+                              SizedBox(
+                                height: 20,
                               ),
                               TextFormField(
                                 controller: controller.passwordCont,
@@ -52,8 +55,11 @@ class LoginPage extends StatelessWidget {
                                     true, // to make`t the star show when write password
                                 decoration: CInputDecoration(
                                     errorText: controller.passwordError,
-                                    hint: "your password",
-                                    label: "password"),
+                                    hint: "your password".tr,
+                                    label: "password".tr),
+                              ),
+                              SizedBox(
+                                height: 20,
                               ),
                               TextButton.icon(
                                   onPressed: () => controller.login(context),

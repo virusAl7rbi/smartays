@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:smartays/service/apiService.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:smartays/view/homePage.dart';
+import 'package:smartays/view/widget/loadingWidget.dart';
 
 class LoginController extends GetxController {
   // text filed controllers
@@ -34,6 +35,7 @@ class LoginController extends GetxController {
   }
 
   login(context) async {
+    Loading(context);
     await formValidator().then((isValid) {
       if (isValid == false) {
         update();

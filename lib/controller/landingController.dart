@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, unnecessary_null_comparison
 
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -26,11 +26,10 @@ class LandingPageController extends GetxController {
           (route) => false);
     }
     await localStorage.read(key: "language").then((language) {
-      Map langs = {
-        "en":Locale("en","US"),
-        "ar": Locale('ar', 'SA')
-      };
-      Get.updateLocale(langs['language']);
+      if (language.runtimeType == null) {
+        Map langs = {"en": Locale("en", "US"), "ar": Locale('ar', 'SA')};
+        Get.updateLocale(langs['language']);
+      }
     });
   }
 

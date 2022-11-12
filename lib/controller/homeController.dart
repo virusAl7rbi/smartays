@@ -1,6 +1,4 @@
 // ignore_for_file: prefer_const_constructors, unrelated_type_equality_checks
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
@@ -73,34 +71,41 @@ class HomeController extends GetxController {
 
   checkOut(context) async {
     await LocalAuth.authenticate();
-    api.checkOut().then((response) => {
-          if (response == "check in First")
-            {
-              showDialog(
-                  context: context,
-                  builder: (context) => AlertDialog(
-                        actions: [
-                          TextButton(
-                              onPressed: () => Navigator.pop(context),
-                              child: Text("Ok"))
-                        ],
-                        content: Text("First check in"),
-                      ))
-            }
-          else
-            {
-              showDialog(
-                  context: context,
-                  builder: (context) => AlertDialog(
-                        actions: [
-                          TextButton(
-                              onPressed: () => Navigator.pop(context),
-                              child: Text("Ok"))
-                        ],
-                        content: Text("checked Out"),
-                      ))
-            }
-        });
+    Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
+    api
+        .checkOut(
+            lat: position.latitude.toString(),
+            lon: position.longitude.toString(),
+            deviceId: "234")
+        .then((response) => {
+              if (response == "check in First")
+                {
+                  showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                            actions: [
+                              TextButton(
+                                  onPressed: () => Navigator.pop(context),
+                                  child: Text("Ok"))
+                            ],
+                            content: Text("First check in"),
+                          ))
+                }
+              else
+                {
+                  showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                            actions: [
+                              TextButton(
+                                  onPressed: () => Navigator.pop(context),
+                                  child: Text("Ok"))
+                            ],
+                            content: Text("checked Out"),
+                          ))
+                }
+            });
   }
 
   leave(context) async {
