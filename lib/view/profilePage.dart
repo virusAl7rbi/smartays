@@ -20,30 +20,44 @@ class ProfilePage extends StatelessWidget {
           return ListView(
             padding: EdgeInsets.all(20),
             children: [
-              // TextFormField(
-              //   decoration: InputDecoration(
-              //       label: Text("email".tr),
-              //       hintText: "example@exmple.com",
-              //       border: OutlineInputBorder()),
-              // ),
-              // SizedBox(
-              //   height: 20,
-              // ),
-              // TextFormField(
-              //   decoration: InputDecoration(
-              //       label: Text("password".tr),
-              //       hintText: "your password".tr,
-              //       border: OutlineInputBorder()),
-              // ),
-              // SizedBox(
-              //   height: 20,
-              // ),
-              // Text(
-              //   decoration: InputDecoration(
-              //       label: Text("phone number".tr),
-              //       hintText: "05xxxxxxxx",
-              //       border: OutlineInputBorder()),
-              // ),
+              TextFormField(
+                initialValue: controller.email,
+                decoration: InputDecoration(
+                    enabled: false,
+                    label: Text("email".tr),
+                    border: OutlineInputBorder()),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              TextFormField(
+                initialValue: controller.name,
+                enabled: false,
+                decoration: InputDecoration(
+                    label: Text("name".tr), border: OutlineInputBorder()),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              TextFormField(
+                initialValue: controller.phone,
+                decoration: InputDecoration(
+                    enabled: false,
+                    label: Text("phone number".tr),
+                    hintText: "05xxxxxxxx",
+                    border: OutlineInputBorder()),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              TextButton.icon(
+                onPressed: () => controller.logout,
+                label: Text(
+                  "Log out".tr,
+                  style: TextStyle(fontSize: 20),
+                ),
+                icon: Icon(Icons.logout_rounded),
+              )
             ],
           );
         },
