@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:geolocator/geolocator.dart';
 
 import 'package:smartays/service/apiService.dart';
+import 'package:smartays/service/localAuth.dart';
 
 class HomeController extends GetxController {
   // api client
@@ -19,6 +20,7 @@ class HomeController extends GetxController {
   }
 
   checkIn(context) async {
+    await LocalAuth.authenticate();
     Position position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
     api
@@ -70,6 +72,7 @@ class HomeController extends GetxController {
   }
 
   checkOut(context) async {
+    await LocalAuth.authenticate();
     api.checkOut().then((response) => {
           if (response == "check in First")
             {
@@ -101,6 +104,7 @@ class HomeController extends GetxController {
   }
 
   leave(context) async {
+    await LocalAuth.authenticate();
     showDialog(
         context: context,
         builder: (ctx) => AlertDialog(
@@ -113,8 +117,7 @@ class HomeController extends GetxController {
                   ),
                 ),
                 IconButton(
-                    onPressed: () =>
-                        api.userAskPermission(permission.text),
+                    onPressed: () => api.userAskPermission(permission.text),
                     icon: Icon(Icons.send_rounded))
               ]),
             ));
