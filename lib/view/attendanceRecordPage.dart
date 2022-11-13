@@ -18,13 +18,13 @@ class AttendancePage extends StatelessWidget {
       body: GetBuilder<AttendanceController>(
         init: AttendanceController(),
         builder: (controller) {
-          controller.getAttendanceRecord();
+          controller.getAttendanceRecord(context);
           return ListView.separated(
             padding: EdgeInsets.all(20),
             shrinkWrap: true,
             itemBuilder: (context, int index) {
               return Container(
-                height: 120,
+                height: 135,
                 padding: EdgeInsets.all(15),
                 width: double.infinity,
                 decoration: controller.cardDesign,
@@ -33,12 +33,13 @@ class AttendancePage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Text(
-                        "Date\n${controller.recordItems[index]['Date']}".tr,
+                        "Date".tr +
+                            "\n${controller.recordItems[index]['Date']}",
                         textAlign: TextAlign.center,
                       ),
                       Text(
-                        "Check Out\n${controller.recordItems[index]['checkOut']}"
-                            .tr,
+                        "Check In".tr +
+                            "\n${controller.recordItems[index]['checkIn']}",
                         textAlign: TextAlign.center,
                       )
                     ],
@@ -52,12 +53,14 @@ class AttendancePage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Text(
-                        "Day\n${controller.recordItems[index]['Day']}".tr,
+                        "Day".tr +
+                            "\n" +
+                            controller.recordItems[index]['Day'].toString().tr,
                         textAlign: TextAlign.center,
                       ),
                       Text(
-                        "Check In\n${controller.recordItems[index]['checkIn']}"
-                            .tr,
+                        "Check Out".tr +
+                            "\n${controller.recordItems[index]['checkOut']}",
                         textAlign: TextAlign.center,
                       ),
                     ],

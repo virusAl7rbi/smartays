@@ -27,6 +27,7 @@ class HomeController extends GetxController {
             lon: position.longitude.toString(),
             deviceId: "234")
         .then((response) => {
+              printInfo(info: response),
               if (response == "checked")
                 {
                   showDialog(
@@ -37,7 +38,7 @@ class HomeController extends GetxController {
                                   onPressed: () => Navigator.pop(context),
                                   child: Text("Ok"))
                             ],
-                            content: Text("checked In"),
+                            content: Text("checked In".tr),
                           ))
                 }
               else if (response == "out of ponders")
@@ -50,7 +51,7 @@ class HomeController extends GetxController {
                                   onPressed: () => Navigator.pop(context),
                                   child: Text("Ok"))
                             ],
-                            content: Text("Need to be in the building"),
+                            content: Text("Need to be in the building".tr),
                           ))
                 }
               else
@@ -63,7 +64,7 @@ class HomeController extends GetxController {
                                   onPressed: () => Navigator.pop(context),
                                   child: Text("Ok"))
                             ],
-                            content: Text("already checked In"),
+                            content: Text("already checked In".tr),
                           ))
                 }
             });
@@ -79,6 +80,8 @@ class HomeController extends GetxController {
             lon: position.longitude.toString(),
             deviceId: "234")
         .then((response) => {
+              // response = response['message'],
+              printInfo(info: "${response.runtimeType}"),
               if (response == "check in First")
                 {
                   showDialog(
@@ -87,9 +90,36 @@ class HomeController extends GetxController {
                             actions: [
                               TextButton(
                                   onPressed: () => Navigator.pop(context),
-                                  child: Text("Ok"))
+                                  child: Text("Ok".tr))
                             ],
-                            content: Text("First check in"),
+                            content: Text("First check in".tr),
+                          ))
+                }
+              else if (response == " You are not in the specified location ")
+                {
+                  showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                            actions: [
+                              TextButton(
+                                  onPressed: () => Navigator.pop(context),
+                                  child: Text("Ok".tr))
+                            ],
+                            content: Text(
+                                " You are not in the specified location ".tr),
+                          ))
+                }
+              else if (response == " It has already check out ")
+                {
+                  showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                            actions: [
+                              TextButton(
+                                  onPressed: () => Navigator.pop(context),
+                                  child: Text("Ok".tr))
+                            ],
+                            content: Text(" It has already check out ".tr),
                           ))
                 }
               else
@@ -100,9 +130,9 @@ class HomeController extends GetxController {
                             actions: [
                               TextButton(
                                   onPressed: () => Navigator.pop(context),
-                                  child: Text("Ok"))
+                                  child: Text("Ok".tr))
                             ],
-                            content: Text("checked Out"),
+                            content: Text("checked Out".tr),
                           ))
                 }
             });

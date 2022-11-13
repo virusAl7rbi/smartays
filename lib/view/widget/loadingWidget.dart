@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 
 Loading(context) => showDialog(
+  barrierDismissible: false,
       context: context,
       builder: (context) => Center(
         child: SizedBox(
