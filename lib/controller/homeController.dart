@@ -31,35 +31,46 @@ class HomeController extends GetxController {
               if (response == "checked")
                 {
                   Get.dialog(AlertDialog(
-                            actions: [
-                              TextButton(
-                                  onPressed: () => Navigator.pop(context),
-                                  child: Text("Ok".tr))
-                            ],
-                            content: Text("checked In".tr),
-                          ))
+                    actions: [
+                      TextButton(
+                          onPressed: () => Navigator.pop(context),
+                          child: Text("Ok".tr))
+                    ],
+                    content: Text("checked In".tr),
+                  ))
                 }
               else if (response == "out of ponders")
                 {
-                  Get.dialog( AlertDialog(
-                            actions: [
-                              TextButton(
-                                  onPressed: () => Navigator.pop(context),
-                                  child: Text("Ok".tr))
-                            ],
-                            content: Text("Need to be in the building".tr),
-                          ))
+                  Get.dialog(AlertDialog(
+                    actions: [
+                      TextButton(
+                          onPressed: () => Navigator.pop(context),
+                          child: Text("Ok".tr))
+                    ],
+                    content: Text("Need to be in the building".tr),
+                  ))
+                }
+              else if (response == " It has already been prepared ")
+                {
+                  Get.dialog(AlertDialog(
+                    actions: [
+                      TextButton(
+                          onPressed: () => Navigator.pop(context),
+                          child: Text("Ok".tr))
+                    ],
+                    content: Text("already checked In".tr),
+                  ))
                 }
               else
                 {
-                  Get.dialog( AlertDialog(
-                            actions: [
-                              TextButton(
-                                  onPressed: () => Navigator.pop(context),
-                                  child: Text("Ok".tr))
-                            ],
-                            content: Text("already checked In".tr),
-                          ))
+                  Get.dialog(AlertDialog(
+                    actions: [
+                      TextButton(
+                          onPressed: () => Navigator.pop(context),
+                          child: Text("Ok".tr))
+                    ],
+                    content: Text("error:$response".tr),
+                  ))
                 }
             });
   }
@@ -74,54 +85,49 @@ class HomeController extends GetxController {
             lon: position.longitude.toString(),
             deviceId: "234")
         .then((response) => {
-              // response = response['message'],
-              printInfo(info: "${response.runtimeType}"),
               if (response == "check in First")
                 {
-                  showDialog(
-                      context: context,
-                      builder: (context) => AlertDialog(
-                            actions: [
-                              TextButton(
-                                  onPressed: () => Navigator.pop(context),
-                                  child: Text("Ok".tr))
-                            ],
-                            content: Text("First check in".tr),
-                          ))
+                  Get.dialog(AlertDialog(
+                    actions: [
+                      TextButton(
+                          onPressed: () => Navigator.pop(context),
+                          child: Text("Ok".tr))
+                    ],
+                    content: Text("First check in".tr),
+                  ))
                 }
               else if (response == " You are not in the specified location ")
                 {
-                  Get.dialog( AlertDialog(
-                            actions: [
-                              TextButton(
-                                  onPressed: () => Navigator.pop(context),
-                                  child: Text("Ok".tr))
-                            ],
-                            content: Text(
-                                " You are not in the specified location ".tr),
-                          ))
+                  Get.dialog(AlertDialog(
+                    actions: [
+                      TextButton(
+                          onPressed: () => Navigator.pop(context),
+                          child: Text("Ok".tr))
+                    ],
+                    content: Text("You are not in the specified location".tr),
+                  ))
                 }
               else if (response == " It has already check out ")
                 {
-                  Get.dialog( AlertDialog(
-                            actions: [
-                              TextButton(
-                                  onPressed: () => Navigator.pop(context),
-                                  child: Text("Ok".tr))
-                            ],
-                            content: Text(" It has already check out ".tr),
-                          ))
+                  Get.dialog(AlertDialog(
+                    actions: [
+                      TextButton(
+                          onPressed: () => Navigator.pop(context),
+                          child: Text("Ok".tr))
+                    ],
+                    content: Text("It has already check out".tr),
+                  ))
                 }
-              else
+              else if (response == " ok ")
                 {
-                  Get.dialog( AlertDialog(
-                            actions: [
-                              TextButton(
-                                  onPressed: () => Navigator.pop(context),
-                                  child: Text("Ok".tr))
-                            ],
-                            content: Text("checked Out".tr),
-                          ))
+                  Get.dialog(AlertDialog(
+                    actions: [
+                      TextButton(
+                          onPressed: () => Navigator.pop(context),
+                          child: Text("Ok".tr))
+                    ],
+                    content: Text("checked Out".tr),
+                  ))
                 }
             });
   }

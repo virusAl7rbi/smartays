@@ -27,44 +27,48 @@ class AttendancePage extends StatelessWidget {
                 padding: EdgeInsets.all(15),
                 width: double.infinity,
                 decoration: controller.cardDesign,
-                child: Column(children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        "Date".tr +
-                            "\n${controller.recordItems[index]['Date']}",
-                        textAlign: TextAlign.center,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Text(
+                            "Date".tr +
+                                "\n${controller.recordItems[index]['Date']}",
+                            textAlign: TextAlign.center,
+                          ),
+                          Text(
+                            "Check In".tr +
+                                "\n${controller.recordItems[index]['checkIn']}",
+                            textAlign: TextAlign.center,
+                          )
+                        ],
                       ),
-                      Text(
-                        "Check In".tr +
-                            "\n${controller.recordItems[index]['checkIn']}",
-                        textAlign: TextAlign.center,
-                      )
-                    ],
-                  ),
-                  Divider(
-                    endIndent: 10,
-                    indent: 10,
-                    thickness: 3,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Text(
-                        "Day".tr +
-                            "\n" +
-                            controller.recordItems[index]['Day'].toString().tr,
-                        textAlign: TextAlign.center,
+                      Divider(
+                        endIndent: 10,
+                        indent: 10,
+                        thickness: 3,
                       ),
-                      Text(
-                        "Check Out".tr +
-                            "\n${controller.recordItems[index]['checkOut']}",
-                        textAlign: TextAlign.center,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Text(
+                            "Day".tr +
+                                "\n" +
+                                controller.recordItems[index]['Day']
+                                    .toString()
+                                    .tr,
+                            textAlign: TextAlign.center,
+                          ),
+                          Text(
+                            "Check Out".tr +
+                                "\n${controller.recordItems[index]['checkOut']}",
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                ]),
+                    ]),
               );
             },
             itemCount: controller.recordLength,

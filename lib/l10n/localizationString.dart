@@ -45,15 +45,19 @@ class LocalizationString extends Translations {
           "My Profile": "الملف الشخصي",
           "Log out": "تسحيل الخروج",
           "phone number": "رقم الهاتف",
-          " You are not in the specified location ": "لست في الموقع المحدد",
-          " It has already check out ": "تم الإنصراف مسبقا",
-          "checked Out": "تم الإنصراف",
+          "You are not in the specified location": "لست في الموقع المحدد",
+          "It has already check out": "تم تسجيل الإنصراف مسبقا",
+          "checked Out": "تم تسجيل الإنصراف",
           "First check in": "الرجاء تسجبل الحضور أولا",
-          "Ok":"حسنا",
-          "already checked In":"تم تسجيل الحضور مسبقا",
-          "checked In":"تم تسجبل الحضور",
-          "Need to be in the building":"الرحاء التواجد في المبنى قبل تسجبل الحضور",
-          "Login":"تسجيل الدخول"
+          "Ok": "حسنا",
+          "already checked In": "تم تسجيل الحضور مسبقا",
+          "checked In": "تم تسجبل الحضور",
+          "Need to be in the building":
+              "الرحاء التواجد في المبنى قبل تسجبل الحضور",
+          "Login": "تسجيل الدخول",
+          "error": "حدث خطأ",
+          "VPN is Activated, please turn it off before using the app":
+              "الرجاء إيقاف تشغيل (VPN) قبل إستخدام التطبيق"
         },
         "en_US": {
           "language": "English",

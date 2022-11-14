@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, unnecessary_null_comparison
 
+import 'package:check_vpn_connection/check_vpn_connection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
@@ -11,30 +12,42 @@ class LandingPageController extends GetxController {
   FlutterSecureStorage localStorage = FlutterSecureStorage();
   ApiClient api = ApiClient();
 
-  toHomePage() => Get.to(() => HomePage());
+  toHomePage() => Get.off(() => HomePage());
 
-  toLoginPage() => Get.to(() => LoginPage());
+  toLoginPage() => Get.off(() => LoginPage());
 
   checkUserState() async {
-    String? token;
-    await localStorage.read(key: "token").then((value) => token = value);
-    if (token != null) {
-      api.getTimework().then((response) {
-        if (response['status'] == "Token is Expired") {
-          toLoginPage();
-        } else {
-          toHomePage();
+    if (await CheckVpnConnection.isVpnActive()) {
+      // do some action if VPN connection status is true
+      Get.defaultDialog(
+          // cancel: Text("Ok"),
+          barrierDismissible: false,
+          content: Text(
+              "VPN is Activated, please turn it off before using the app".tr),
+          actions: [
+            TextButton(onPressed: () => Get.back(), child: Text("Ok"))
+          ]);
+    } else {
+      String? token;
+      await localStorage.read(key: "token").then((value) => token = value);
+      if (token != null) {
+        api.getTimework().then((response) {
+          if (response['status'] == "Token is Expired") {
+            toLoginPage();
+          } else {
+            toHomePage();
+          }
+        });
+      } else {
+        toLoginPage();
+      }
+      await localStorage.read(key: "language").then((language) {
+        if (language.runtimeType == null) {
+          Map langs = {"en": Locale("en", "US"), "ar": Locale('ar', 'SA')};
+          Get.updateLocale(langs['language']);
         }
       });
-    } else {
-      toLoginPage();
     }
-    await localStorage.read(key: "language").then((language) {
-      if (language.runtimeType == null) {
-        Map langs = {"en": Locale("en", "US"), "ar": Locale('ar', 'SA')};
-        Get.updateLocale(langs['language']);
-      }
-    });
   }
 
   LandingPageController() {

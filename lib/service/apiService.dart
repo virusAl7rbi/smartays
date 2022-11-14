@@ -11,7 +11,8 @@ class ApiClient extends GetxController {
 
   Uri _fullUrl(String parameter) {
     // stander url https://smartays.com/api/auth/
-    return Uri.parse("https://smartays.com/api/auth/$parameter");
+    // return Uri.parse("https://smartays.com/api/auth/$parameter");
+    return Uri.parse("https://fing.hadetha.edu.sa/api/auth/$parameter");
   }
 
   Future<Map<String, dynamic>> request(
