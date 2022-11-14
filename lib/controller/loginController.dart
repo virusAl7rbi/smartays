@@ -35,7 +35,7 @@ class LoginController extends GetxController {
   }
 
   login(context) async {
-    Loading(context);
+    Loading();
     await formValidator().then((isValid) {
       if (isValid == false) {
         update();
@@ -43,7 +43,7 @@ class LoginController extends GetxController {
     });
     if (emailError == null && passwordError == null) {
       api.login(emailCont.text, passwordCont.text).then((response) {
-        if (response!.isNotEmpty) {
+        if (response.isNotEmpty) {
           Navigator.pushAndRemoveUntil(
               context,
               MaterialPageRoute(builder: (context) => HomePage()),

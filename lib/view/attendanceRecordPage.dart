@@ -18,7 +18,6 @@ class AttendancePage extends StatelessWidget {
       body: GetBuilder<AttendanceController>(
         init: AttendanceController(),
         builder: (controller) {
-          controller.getAttendanceRecord(context);
           return ListView.separated(
             padding: EdgeInsets.all(20),
             shrinkWrap: true,

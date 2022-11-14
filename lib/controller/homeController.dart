@@ -30,39 +30,33 @@ class HomeController extends GetxController {
               printInfo(info: response),
               if (response == "checked")
                 {
-                  showDialog(
-                      context: context,
-                      builder: (context) => AlertDialog(
+                  Get.dialog(AlertDialog(
                             actions: [
                               TextButton(
                                   onPressed: () => Navigator.pop(context),
-                                  child: Text("Ok"))
+                                  child: Text("Ok".tr))
                             ],
                             content: Text("checked In".tr),
                           ))
                 }
               else if (response == "out of ponders")
                 {
-                  showDialog(
-                      context: context,
-                      builder: (context) => AlertDialog(
+                  Get.dialog( AlertDialog(
                             actions: [
                               TextButton(
                                   onPressed: () => Navigator.pop(context),
-                                  child: Text("Ok"))
+                                  child: Text("Ok".tr))
                             ],
                             content: Text("Need to be in the building".tr),
                           ))
                 }
               else
                 {
-                  showDialog(
-                      context: context,
-                      builder: (context) => AlertDialog(
+                  Get.dialog( AlertDialog(
                             actions: [
                               TextButton(
                                   onPressed: () => Navigator.pop(context),
-                                  child: Text("Ok"))
+                                  child: Text("Ok".tr))
                             ],
                             content: Text("already checked In".tr),
                           ))
@@ -97,9 +91,7 @@ class HomeController extends GetxController {
                 }
               else if (response == " You are not in the specified location ")
                 {
-                  showDialog(
-                      context: context,
-                      builder: (context) => AlertDialog(
+                  Get.dialog( AlertDialog(
                             actions: [
                               TextButton(
                                   onPressed: () => Navigator.pop(context),
@@ -111,9 +103,7 @@ class HomeController extends GetxController {
                 }
               else if (response == " It has already check out ")
                 {
-                  showDialog(
-                      context: context,
-                      builder: (context) => AlertDialog(
+                  Get.dialog( AlertDialog(
                             actions: [
                               TextButton(
                                   onPressed: () => Navigator.pop(context),
@@ -124,9 +114,7 @@ class HomeController extends GetxController {
                 }
               else
                 {
-                  showDialog(
-                      context: context,
-                      builder: (context) => AlertDialog(
+                  Get.dialog( AlertDialog(
                             actions: [
                               TextButton(
                                   onPressed: () => Navigator.pop(context),

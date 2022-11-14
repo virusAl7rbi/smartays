@@ -49,12 +49,12 @@ class ApiClient extends GetxController {
     return result;
   }
 
-  Future<List> _getTimework() async {
-    late List result;
+  Future<Map> getTimework() async {
+    late Map result;
     String? token = await localStorage.read(key: "token");
 
-    await request(url: 'user_get_timework', requestBody: {"token": token!})
-        .then((response) => result = response['data']);
+    await request(url: 'user_get_timeworke', requestBody: {"token": token!})
+        .then((response) => result = response);
     return result;
   }
 
@@ -102,14 +102,14 @@ class ApiClient extends GetxController {
   }
 
   Future<String> userAskPermission(String reason) async {
-    String result = "";
+    String? result;
     String? token = await localStorage.read(key: "token");
 
     await request(
             url: 'user_ask_perm',
             requestBody: {"token": token!, "reason": reason})
         .then((response) => result = response['message']);
-    return result;
+    return result!;
   }
 
   Future<Map> checkDevice(String deviceId) async {

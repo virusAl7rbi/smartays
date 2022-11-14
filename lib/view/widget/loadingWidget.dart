@@ -2,10 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-Loading(context) => showDialog(
-  barrierDismissible: false,
-      context: context,
-      builder: (context) => Center(
+Loading() =>  Center(
         child: SizedBox(
           width: 80,
           height: 80,
@@ -13,5 +10,4 @@ Loading(context) => showDialog(
               // backgroundColor: Colors.transparent,
               color: Color.fromRGBO(143, 148, 251, 0.8)),
         ),
-      ),
     );

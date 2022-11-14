@@ -10,18 +10,17 @@ class LandingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(LandingPageController(context));
+    Get.put(LandingPageController());
     Future.delayed(Duration.zero, () {
-      Loading(context); // wait until page load to show the dialog
+      Get.dialog(Loading()); // wait until page load to show the dialog
     });
     return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage(
-                  "assets/images/back.png",
-                ),
-                fit: BoxFit.cover)),
+      body: Image.asset(
+        "assets/images/back.png",
+        fit: BoxFit.cover,
+        height: double.infinity,
+        width: double.infinity,
+        alignment: Alignment.center,
       ),
     );
   }

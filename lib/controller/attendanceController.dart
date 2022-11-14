@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:smartays/service/apiService.dart';
+import 'package:smartays/view/widget/loadingWidget.dart';
 
 class AttendanceController extends GetxController {
   BoxDecoration cardDesign = BoxDecoration(
@@ -29,7 +30,25 @@ class AttendanceController extends GetxController {
     return formated;
   }
 
-  getAttendanceRecord(context) async {
+  loadingDialog() {
+    Get.dialog(
+      Center(
+        child: SizedBox(
+          width: 80,
+          height: 80,
+          child: CircularProgressIndicator(
+              // backgroundColor: Colors.transparent,
+              color: Color.fromRGBO(143, 148, 251, 0.8)),
+        ),
+      ),
+    );
+    Get.back();
+  }
+
+  getAttendanceRecord() async {
+    Future.delayed(Duration.zero, () {
+      Get.dialog(Loading());
+    });
     await api.attendanceRecord().then((response) => {
           recordLength = response.length,
           recordItems = response
@@ -43,6 +62,13 @@ class AttendanceController extends GetxController {
                   })
               .toList()
         });
+    Get.back();
     update();
+  }
+
+  @override
+  void onInit() {
+    super.onInit();
+    getAttendanceRecord();
   }
 }

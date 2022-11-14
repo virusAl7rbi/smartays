@@ -52,7 +52,8 @@ class LocalizationString extends Translations {
           "Ok":"حسنا",
           "already checked In":"تم تسجيل الحضور مسبقا",
           "checked In":"تم تسجبل الحضور",
-          "Need to be in the building":"الرحاء التواجد في المبنى قبل تسجبل الحضور"
+          "Need to be in the building":"الرحاء التواجد في المبنى قبل تسجبل الحضور",
+          "Login":"تسجيل الدخول"
         },
         "en_US": {
           "language": "English",

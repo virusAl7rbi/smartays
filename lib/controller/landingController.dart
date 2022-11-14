@@ -11,19 +11,23 @@ class LandingPageController extends GetxController {
   FlutterSecureStorage localStorage = FlutterSecureStorage();
   ApiClient api = ApiClient();
 
-  checkUserState(context) async {
+  toHomePage() => Get.to(() => HomePage());
+
+  toLoginPage() => Get.to(() => LoginPage());
+
+  checkUserState() async {
     String? token;
     await localStorage.read(key: "token").then((value) => token = value);
     if (token != null) {
-      Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (context) => HomePage()),
-          (route) => false);
+      api.getTimework().then((response) {
+        if (response['status'] == "Token is Expired") {
+          toLoginPage();
+        } else {
+          toHomePage();
+        }
+      });
     } else {
-      Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (context) => LoginPage()),
-          (route) => false);
+      toLoginPage();
     }
     await localStorage.read(key: "language").then((language) {
       if (language.runtimeType == null) {
@@ -33,7 +37,7 @@ class LandingPageController extends GetxController {
     });
   }
 
-  LandingPageController(context) {
-    checkUserState(context);
+  LandingPageController() {
+    checkUserState();
   }
 }
