@@ -42,9 +42,11 @@ dependencies:
   platform_device_id: ^1.0.1
   geolocator: ^9.0.2
   email_validator: ^2.1.17
-  geocoding: ^2.0.5
   local_auth: ^2.1.2
   check_vpn_connection: ^0.0.2
+  flutter_compass: ^0.7.0
+  maps_toolkit: ^2.0.1
+  animated_rotation: ^2.0.0
 
 dev_dependencies:
   flutter_test:

@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       body: ListView(shrinkWrap: true, children: [
         CAppBar(
-          title: "Smart Fingerprint",
+          title: "Smart Fingerprint".tr,
           backgroundColor: Color.fromRGBO(143, 148, 251, 1),
         ),
         GetBuilder<HomeController>(
@@ -28,14 +28,14 @@ class HomePage extends StatelessWidget {
                   children: [
                     Container(
                       padding: EdgeInsets.symmetric(vertical: 25),
-                      margin: EdgeInsets.all(25),
+                      margin: EdgeInsets.symmetric(vertical: 25),
                       decoration: BoxDecoration(
                         border: Border.all(
                           color: Color.fromRGBO(143, 148, 251, 0.34),
                           // width: MediaQuery.of(context).size.width * 0.9,
                         ),
                       ),
-                      child: Column(),
+                      child: controller.compassWidget(),
                       height: MediaQuery.of(context).size.height / 2,
                     ),
                     GridView.count(

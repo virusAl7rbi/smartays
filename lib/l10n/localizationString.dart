@@ -57,7 +57,8 @@ class LocalizationString extends Translations {
           "Login": "تسجيل الدخول",
           "error": "حدث خطأ",
           "VPN is Activated, please turn it off before using the app":
-              "الرجاء إيقاف تشغيل (VPN) قبل إستخدام التطبيق"
+              "الرجاء إيقاف تشغيل (VPN) قبل إستخدام التطبيق",
+          "m": "متر"
         },
         "en_US": {
           "language": "English",

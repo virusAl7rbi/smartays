@@ -6,6 +6,7 @@ import 'package:geolocator/geolocator.dart';
 
 import 'package:smartays/service/apiService.dart';
 import 'package:smartays/service/localAuth.dart';
+import 'package:smartays/view/widget/compassWidget.dart';
 
 class HomeController extends GetxController {
   // api client
@@ -17,6 +18,7 @@ class HomeController extends GetxController {
     Navigator.push(context, MaterialPageRoute(builder: ((context) => page)));
   }
 
+  compassWidget() => compass();
   checkIn(context) async {
     await LocalAuth.authenticate();
     Position position = await Geolocator.getCurrentPosition(
