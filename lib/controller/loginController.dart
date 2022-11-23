@@ -35,7 +35,7 @@ class LoginController extends GetxController {
   }
 
   login(context) async {
-    Loading();
+    Get.dialog(Loading());
     await formValidator().then((isValid) {
       if (isValid == false) {
         update();

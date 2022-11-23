@@ -22,10 +22,8 @@ class ApiClient extends GetxController {
         ..fields.addAll(requestBody!);
       var response = await request.send();
       final respStr = await response.stream.bytesToString();
-      print(respStr);
       return jsonDecode(respStr);
     } catch (error) {
-      print(error);
       return {"error": error};
     }
   }
@@ -69,7 +67,7 @@ class ApiClient extends GetxController {
     return result;
   }
 
-  Future<Map> logout() async {
+  Future logout() async {
     late Map result;
     String? token = await localStorage.read(key: "token");
     await request(url: 'logout', requestBody: {"token": token!})

@@ -23,11 +23,10 @@ class HomePage extends StatelessWidget {
             init: HomeController(),
             builder: (controller) {
               return Padding(
-                padding: const EdgeInsets.all(20),
+                padding: const EdgeInsets.symmetric(horizontal: 15),
                 child: Column(
                   children: [
                     Container(
-                      padding: EdgeInsets.symmetric(vertical: 25),
                       margin: EdgeInsets.symmetric(vertical: 25),
                       decoration: BoxDecoration(
                         border: Border.all(
